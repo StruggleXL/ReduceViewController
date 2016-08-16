@@ -1,0 +1,2 @@
+# ReduceViewController
+简化viewController中的代码
