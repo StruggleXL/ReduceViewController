@@ -1,0 +1,72 @@
+{"code" : "0",
+	"data" : [
+	{
+	"examinationId" : "65",
+	"examinationName" : "村上春树",
+	"minselectcount" : "1",
+	"maxselectcount" : "2",
+	"options" : [
+	{
+	"item_prefix" : "A",
+	"id" : "28",
+	"item_value" : "1",
+	"item_desc" : "11"
+},
+	{
+	"item_prefix" : "b",
+	"id" : "29",
+	"item_value" : "2",
+	"item_desc" : "222"
+},
+     {
+     "item_prefix" : "c",
+     "id" : "30",
+     "item_value" : "3",
+     "item_desc" : "333"
+},
+     {
+     "item_prefix" : "d",
+     "id" : "31",
+     "item_value" : "4",
+     "item_desc" : "444"
+     }
+
+]
+},
+	{
+	"examinationId" : "74",
+	"examinationName" : "测试11",
+	"minselectcount" : "1",
+	"maxselectcount" : "1",
+	"options" : [
+	{
+	"item_prefix" : "AW",
+	"id" : "43",
+	"item_value" : "1111",
+	"item_desc" : "1111"
+},
+	{
+	"item_prefix" : "B",
+	"id" : "44",
+	"item_value" : "222",
+	"item_desc" : "222"
+},
+	{
+	"item_prefix" : "C",
+	"id" : "45",
+	"item_value" : "333",
+	"item_desc" : "333"
+},
+	{
+	"item_prefix" : "D",
+	"id" : "46",
+	"item_value" : "444",
+	"item_desc" : "444"
+}
+]
+}
+],
+	"msg" : "success",
+	"dataName" : "",
+	"version" : ""
+}
