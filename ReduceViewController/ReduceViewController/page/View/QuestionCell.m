@@ -17,12 +17,17 @@
 @implementation QuestionCell
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.selectionStyle=UITableViewCellSelectionStyleNone;
+//    self.selectionStyle=UITableViewCellSelectionStyleNone;
 }
 -(void)setModel:(QuestionSelectModel *)model
 {
     [super setModel:model];
+    // 必须设置preferredMaxLayoutWidth属性，和label宽度约束一致
+    CGFloat ww= [UIScreen mainScreen].bounds.size.width;
+    self.optionLabel.preferredMaxLayoutWidth = ww -10 *2;
+    
     self.optionLabel.text=model.item_prefix;
+    self.xl_bottomSpace = 20;
 }
 
 @end

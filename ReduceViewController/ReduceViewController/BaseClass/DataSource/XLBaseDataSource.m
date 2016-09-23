@@ -33,6 +33,24 @@
 {
     return [self initWithSections:nil ModelForCellClass:cellClassWithModel];
 }
+
+- (void)clearAllRows {
+    self.sections = [NSMutableArray arrayWithObject:[[XLBaseSectionModel alloc] init]];
+}
+
+- (void)appendRow:(id)row {
+    XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+    [firstSection.rows addObject:row];
+}
+- (void)appendRows:(NSArray *)rows {
+    XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+    [firstSection.rows addObjectsFromArray:rows];
+}
+- (NSInteger)rowsCount {
+    XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+    return firstSection.rows.count;
+}
+
 //根据indexPath返回对应行model
 - (id)tableView:(UITableView *)tableView objectForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sections.count > indexPath.section) {

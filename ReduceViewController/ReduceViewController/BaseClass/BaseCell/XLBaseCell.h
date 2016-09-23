@@ -11,5 +11,9 @@
 @interface XLBaseCell : UITableViewCell
 
 // 子类重写set方法，给cell绑定数据
-@property (nonatomic,strong)id model;
+@property (nonatomic,strong) id model;
+/** 底部控件距下间距*/
+@property (nonatomic,assign) CGFloat xl_bottomSpace;
+/** 根据model由系统自动返回cell高度*/
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object;
 @end

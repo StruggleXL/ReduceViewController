@@ -10,21 +10,10 @@
 
 @implementation XLBaseSectionModel
 
-
--(NSMutableArray *)rows
-{
-    if (!_rows) {
-        _rows=[NSMutableArray array];
+- (instancetype)init {
+    if (self = [super init]) {
+        self.rows = [[NSMutableArray alloc] init];
     }
-    return _rows;
-}
-
-+ (NSArray <XLBaseSectionModel *>*)sectionsWithRows:(NSArray *)rows
-{
-    NSMutableArray *array=[NSMutableArray array];
-    XLBaseSectionModel *model=[[XLBaseSectionModel alloc]init];
-    [model.rows addObjectsFromArray:rows];
-    [array addObject:model];
-    return array;
+    return self;
 }
 @end

@@ -16,6 +16,5 @@
 //存储每行model的数组
 @property (nonatomic, strong) NSMutableArray *rows;
 
-//当服务端返回的数据只有一个区时，可用此方法生成装有sectionModel的数组
-+ (NSArray <XLBaseSectionModel *>*)sectionsWithRows:(NSArray *)rows;
+
 @end
