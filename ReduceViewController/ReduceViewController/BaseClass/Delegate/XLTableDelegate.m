@@ -7,21 +7,43 @@
 //
 
 #import "XLTableDelegate.h"
+#import <objc/runtime.h>
 #import "XLBaseDataSource.h"
 #import "XLBaseCell.h"
 #import "NSObject+CellHeight.h"
+#import "UITableView+XLExtension.h"
 
 @implementation XLTableDelegate
 
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    XLBaseDataSource *dataSource = tableView.dataSource;
+    NSObject *object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
+    Class cellClass = dataSource.cellClassBlock(object);
+    NSString *className = [NSString stringWithUTF8String:class_getName(cellClass)];
+    if (![tableView.xl_hasRegisterCell objectForKey:className]) {
+        @try {
+            // 通过xib创建的cell
+            [[NSBundle mainBundle]loadNibNamed:className owner:nil options:nil];
+            [tableView registerNib:[UINib nibWithNibName:className bundle:nil] forCellReuseIdentifier:className];
+        } @catch (NSException *exception) {
+            if (![tableView dequeueReusableCellWithIdentifier:className]) {
+                // 通过代码创建的cell
+                [tableView registerClass:NSClassFromString(className) forCellReuseIdentifier:className];
+            } else {
+                // 通过storyboard创建的cell，不需任何处理
+            }
+            
+        } @finally {
+            // 保存已注册标记
+            [tableView.xl_hasRegisterCell setObject:@(YES) forKey:className];
+        }
+    }
     if ([self.viewController respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
        return  [self.viewController tableView:tableView heightForRowAtIndexPath:indexPath];
     } else {
-        XLBaseDataSource *dataSource = tableView.dataSource;
-        NSObject *object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
-        Class cellClass = dataSource.cellClassBlock(object);
+        
         if (object.xl_cellHeight <=0) {
             // 缓存cell高度
             CGFloat cellHeight= [cellClass tableView:tableView rowHeightForObject:object];

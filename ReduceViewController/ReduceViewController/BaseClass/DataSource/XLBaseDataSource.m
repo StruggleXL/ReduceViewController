@@ -77,9 +77,9 @@
     NSString *className = [NSString stringWithUTF8String:class_getName(cellClass)];
     
     XLBaseCell *cell =(XLBaseCell *)[tableView dequeueReusableCellWithIdentifier:className];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:className owner:nil options:nil]firstObject];
-    }
+//    if (!cell) {
+//        cell = [[[NSBundle mainBundle]loadNibNamed:className owner:nil options:nil]firstObject];
+//    }
     [cell setModel:model];
     return cell;
 }

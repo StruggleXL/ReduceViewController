@@ -10,7 +10,7 @@
 #import <objc/message.h>
 
 static const void *xl_tableview_reusableCell_key = "xl_tableview_xl_reusableCell_key";
-
+static const void *xl_tableview_hasRegisterCell_key = "xl_tableview_xl_hasRegisterCell_key";
 @implementation UITableView (XLExtension)
 
 - (NSMutableDictionary *)xl_reusableCell {
@@ -21,6 +21,20 @@ static const void *xl_tableview_reusableCell_key = "xl_tableview_xl_reusableCell
         
         objc_setAssociatedObject(self,
                                  xl_tableview_reusableCell_key,
+                                 cells,
+                                 OBJC_ASSOCIATION_RETAIN);
+    }
+    
+    return cells;
+}
+- (NSMutableDictionary *)xl_hasRegisterCell {
+    NSMutableDictionary *cells = objc_getAssociatedObject(self, xl_tableview_hasRegisterCell_key);
+    
+    if (cells == nil) {
+        cells = [[NSMutableDictionary alloc] init];
+        
+        objc_setAssociatedObject(self,
+                                 xl_tableview_hasRegisterCell_key,
                                  cells,
                                  OBJC_ASSOCIATION_RETAIN);
     }

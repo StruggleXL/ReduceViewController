@@ -12,4 +12,7 @@
 
 /** 存放 专门用来计算cellHeight的唯一cell*/
 @property (nonatomic, strong, readonly) NSMutableDictionary *xl_reusableCell;
+
+/** 存放 是否需要注册cell（cell只注册一次即可）*/
+@property (nonatomic, strong, readonly) NSMutableDictionary *xl_hasRegisterCell;
 @end
