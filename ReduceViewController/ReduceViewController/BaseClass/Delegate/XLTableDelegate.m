@@ -15,39 +15,55 @@
 
 @implementation XLTableDelegate
 
+#pragma mark - 注册cell
+/** 判断cell是否由代码创建*/
+- (BOOL)cellCreatByCode:(Class)cellClass {
+    unsigned int count;
+    Method *methods = class_copyMethodList([cellClass class], &count);
+    BOOL flag = NO;
+    for (int i=0; i<count; i++) {
+        Method aMethod = methods[i];
+        if ([@"initWithStyle:reuseIdentifier:" isEqualToString:NSStringFromSelector(method_getName(aMethod))]) {
+            flag = YES;
+        }
+    }
+    free(methods);
+    return flag;
+}
+/** 注册cell（同一个cell只会注册一次）*/
+- (void)registerCellWithTableView:(UITableView *)tableView cellClass:(Class)cellClass {
+    NSString *className = [NSString stringWithUTF8String:class_getName(cellClass)];
+    if (![tableView.xl_hasRegisterCell objectForKey:className]) {
+        if (![tableView dequeueReusableCellWithIdentifier:className]) {
+            if ([self cellCreatByCode:cellClass]) {
+                // 通过代码创建的cell
+                [tableView registerClass:NSClassFromString(className) forCellReuseIdentifier:className];
+            } else {
+                // 通过xib创建的cell
+                [tableView registerNib:[UINib nibWithNibName:className bundle:nil] forCellReuseIdentifier:className];
+            }
+        } else {
+            // 通过storyboard创建的cell，不需任何处理
+        }
+        // 保存已注册标记
+        [tableView.xl_hasRegisterCell setObject:@(YES) forKey:className];
+    }
+}
 
-
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     XLBaseDataSource *dataSource = tableView.dataSource;
     NSObject *object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
     Class cellClass = dataSource.cellClassBlock(object);
-    NSString *className = [NSString stringWithUTF8String:class_getName(cellClass)];
-    if (![tableView.xl_hasRegisterCell objectForKey:className]) {
-        @try {
-            // 通过xib创建的cell
-            [[NSBundle mainBundle]loadNibNamed:className owner:nil options:nil];
-            [tableView registerNib:[UINib nibWithNibName:className bundle:nil] forCellReuseIdentifier:className];
-        } @catch (NSException *exception) {
-            if (![tableView dequeueReusableCellWithIdentifier:className]) {
-                // 通过代码创建的cell
-                [tableView registerClass:NSClassFromString(className) forCellReuseIdentifier:className];
-            } else {
-                // 通过storyboard创建的cell，不需任何处理
-            }
-            
-        } @finally {
-            // 保存已注册标记
-            [tableView.xl_hasRegisterCell setObject:@(YES) forKey:className];
-        }
-    }
+    // 注册cell
+    [self registerCellWithTableView:tableView cellClass:cellClass];
     if ([self.viewController respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
        return  [self.viewController tableView:tableView heightForRowAtIndexPath:indexPath];
     } else {
         
         if (object.xl_cellHeight <=0) {
             // 缓存cell高度
-            CGFloat cellHeight= [cellClass tableView:tableView rowHeightForObject:object];
-            object.xl_cellHeight = cellHeight;
+            object.xl_cellHeight= [cellClass tableView:tableView rowHeightForObject:object];
         }
         return object.xl_cellHeight;
     }
