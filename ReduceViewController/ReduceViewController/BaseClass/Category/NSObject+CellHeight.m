@@ -22,6 +22,6 @@ static const void *xl_NSObject_cellHeight_key = "xl_NSObject_cellHeight_key";
     objc_setAssociatedObject(self,
                              xl_NSObject_cellHeight_key,
                              [NSString stringWithFormat:@"%.1f,",xl_cellHeight],
-                             OBJC_ASSOCIATION_ASSIGN);
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 @end
