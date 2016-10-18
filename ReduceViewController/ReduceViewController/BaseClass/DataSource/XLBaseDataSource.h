@@ -17,6 +17,9 @@ typedef Class (^cellClassWithModel)(id model);
 @property (nonatomic,copy)cellClassWithModel cellClassBlock;
 @property (nonatomic, strong) NSMutableArray *sections;
 
+
+- (void)clearAllSections;
+- (void)appendSections:(NSArray *)sections;
 //// 这4个方法是对于只有1个区时对该区中的行数进行操作//////
 - (void)clearAllRows;
 - (void)appendRow:(id)row;
@@ -26,6 +29,5 @@ typedef Class (^cellClassWithModel)(id model);
 // 根据indexPath返回对应行model
 - (id)tableView:(UITableView *)tableView objectForRowAtIndexPath:(NSIndexPath *)indexPath;
 #warning 注意：此block被copy到堆区，需要__weak修饰;根据不同的model或model相应的属性，返回不同的cell
--(instancetype)initWithSections:(NSMutableArray *)sections ModelForCellClass:(cellClassWithModel)cellClassWithModel;
 -(instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel;
 @end

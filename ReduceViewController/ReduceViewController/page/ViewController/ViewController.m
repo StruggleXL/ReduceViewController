@@ -14,7 +14,7 @@
 #import "QuestionSelectModel.h"
 #import "QuestionCell.h"
 #import "XLTableDelegate.h"
-
+#import "Testios8Cell.h"
 
 @interface ViewController ()<XLTableViewDelegate>
 
@@ -45,7 +45,8 @@
 
     //设置数据源,注意：此block被copy到堆区，需要__weak修饰
     self.baseDataSource=[[XLBaseDataSource alloc]initWithModelForCellClass:^Class(QuestionSelectModel *model) {
-        return [QuestionCell class];
+//        return [QuestionCell class];
+        return [Testios8Cell class];
     }];
     self.tableView.dataSource=self.baseDataSource;
 }
@@ -55,10 +56,19 @@
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *dic= [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     NSArray *dataArray=dic[@"data"];
-    self.baseDataSource.sections=[[NSArray yy_modelArrayWithClass:[QuestionModel class] json:dataArray] mutableCopy];
+    [self.baseDataSource appendSections:[NSArray yy_modelArrayWithClass:[QuestionModel class] json:dataArray]];
+    [self.tableView reloadData];
+    
+    [self performSelector:@selector(addDataWithTest) withObject:nil afterDelay:5];
+}
+- (void)addDataWithTest {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSDictionary *dic= [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSArray *dataArray=dic[@"data"];
+    [self.baseDataSource appendSections:[NSArray yy_modelArrayWithClass:[QuestionModel class] json:dataArray]];
     [self.tableView reloadData];
 }
-
  // 若实现代理方法，就会调用此方法，若不实现，XLTableDelegate会自动计算好所需行高，并缓存
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 44.0f;

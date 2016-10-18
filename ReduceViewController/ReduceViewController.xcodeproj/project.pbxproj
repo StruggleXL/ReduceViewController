@@ -53,6 +53,7 @@
 		76C7A1641D95196A00E9906F /* NSObject+CellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C7A15E1D95196A00E9906F /* NSObject+CellHeight.m */; };
 		76C7A1651D95196A00E9906F /* UITableView+XLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C7A1601D95196A00E9906F /* UITableView+XLExtension.m */; };
 		76C7A1661D95196A00E9906F /* XLTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C7A1631D95196A00E9906F /* XLTableDelegate.m */; };
+		76DC10061DB4B79C0018A66A /* Testios8Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DC10051DB4B79C0018A66A /* Testios8Cell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,8 @@
 		76C7A1601D95196A00E9906F /* UITableView+XLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+XLExtension.m"; sourceTree = "<group>"; };
 		76C7A1621D95196A00E9906F /* XLTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLTableDelegate.h; sourceTree = "<group>"; };
 		76C7A1631D95196A00E9906F /* XLTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLTableDelegate.m; sourceTree = "<group>"; };
+		76DC10041DB4B79C0018A66A /* Testios8Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Testios8Cell.h; sourceTree = "<group>"; };
+		76DC10051DB4B79C0018A66A /* Testios8Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Testios8Cell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +374,8 @@
 			children = (
 				768980961D62BDC10094E52A /* QuestionCell.h */,
 				768980971D62BDC10094E52A /* QuestionCell.m */,
+				76DC10041DB4B79C0018A66A /* Testios8Cell.h */,
+				76DC10051DB4B79C0018A66A /* Testios8Cell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				TargetAttributes = {
 					768980571D62B8FD0094E52A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = PP9RF5D573;
 					};
 				};
 			};
@@ -523,6 +529,7 @@
 				7678EB441D98EF9000E17697 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				7678EB041D95ED8200E17697 /* SDWebImageCompat.m in Sources */,
 				76C7A1661D95196A00E9906F /* XLTableDelegate.m in Sources */,
+				76DC10061DB4B79C0018A66A /* Testios8Cell.m in Sources */,
 				7689808E1D62BC690094E52A /* YYClassInfo.m in Sources */,
 				7678EB461D98EF9000E17697 /* ViewController+MASAdditions.m in Sources */,
 				7678EB0A1D95ED8200E17697 /* UIButton+WebCache.m in Sources */,
@@ -641,8 +648,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PP9RF5D573;
 				INFOPLIST_FILE = ReduceViewController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.srgroup.ReduceViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -653,8 +661,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PP9RF5D573;
 				INFOPLIST_FILE = ReduceViewController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.srgroup.ReduceViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";

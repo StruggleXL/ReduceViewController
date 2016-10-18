@@ -17,27 +17,31 @@
 
 @implementation XLBaseDataSource
 
--(void)setSections:(NSMutableArray *)sections
-{
-    _sections=sections;
+- (NSMutableArray *)sections {
+    if (!_sections) {
+        _sections = [NSMutableArray array];
+    }
+    return _sections;
 }
--(instancetype)initWithSections:(NSMutableArray *)sections ModelForCellClass:(cellClassWithModel)cellClassWithModel
+- (instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel
 {
     if (self=[super init]) {
-        _sections=sections;
+        _sections=[NSMutableArray array];
         _cellClassBlock=cellClassWithModel;
     }
     return self;
 }
--(instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel
-{
-    return [self initWithSections:nil ModelForCellClass:cellClassWithModel];
+//// 对sections的操作 //////
+- (void)clearAllSections {
+    [self.sections removeAllObjects];
 }
-
+- (void)appendSections:(NSArray *)sections {
+    [self.sections addObjectsFromArray:sections];
+}
+//// 这4个方法是对于只有1个区时对该区中的行数进行操作//////
 - (void)clearAllRows {
     self.sections = [NSMutableArray arrayWithObject:[[XLBaseSectionModel alloc] init]];
 }
-
 - (void)appendRow:(id)row {
     XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
     [firstSection.rows addObject:row];
