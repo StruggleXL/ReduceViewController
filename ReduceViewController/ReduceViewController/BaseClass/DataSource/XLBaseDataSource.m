@@ -7,7 +7,6 @@
 //
 
 #import "XLBaseDataSource.h"
-#import "XLBaseSectionModel.h"
 #import "XLBaseCell.h"
 #import <objc/runtime.h>
 
@@ -31,6 +30,11 @@
     }
     return self;
 }
+- (instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel configureCellBlock:(tableViewCellConfigureBlock)aConfigureCellBlock {
+    XLBaseDataSource *data = [self initWithModelForCellClass:cellClassWithModel];
+    data.cellConfigureBlock = aConfigureCellBlock;
+    return data;
+}
 //// 对sections的操作 //////
 - (void)clearAllSections {
     [self.sections removeAllObjects];
@@ -43,16 +47,29 @@
     self.sections = [NSMutableArray arrayWithObject:[[XLBaseSectionModel alloc] init]];
 }
 - (void)appendRow:(id)row {
-    XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
-    [firstSection.rows addObject:row];
+    if (self.sections.count > 0) {
+        XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+        [firstSection.rows addObject:row];
+    }
 }
 - (void)appendRows:(NSArray *)rows {
-    XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
-    [firstSection.rows addObjectsFromArray:rows];
+    if (self.sections.count > 0) {
+        XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+        [firstSection.rows addObjectsFromArray:rows];
+    }
 }
 - (NSInteger)rowsCount {
-    XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
-    return firstSection.rows.count;
+    if (self.sections.count > 0) {
+        XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+        return firstSection.rows.count;
+    }
+    return 0;
+}
+- (void)deleteARow:(id)row {
+    if (self.sections.count > 0) {
+        XLBaseSectionModel *firstSection = [self.sections objectAtIndex:0];
+        [firstSection.rows removeObject:row];
+    }
 }
 
 //根据indexPath返回对应行model
@@ -62,6 +79,14 @@
         if ([sectionModel.rows count] > indexPath.row) {
             return [sectionModel.rows objectAtIndex:indexPath.row];
         }
+    }
+    return nil;
+}
+// 根据indexPath返回对应区model
+- (__kindof XLBaseSectionModel *)tableView:(UITableView *)tableView ObjectForSectionAtSection:(NSInteger)section {
+    if (self.sections.count > section) {
+        XLBaseSectionModel *sectionModel = [self.sections objectAtIndex:section];
+        return sectionModel;
     }
     return nil;
 }
@@ -85,6 +110,9 @@
 //        cell = [[[NSBundle mainBundle]loadNibNamed:className owner:nil options:nil]firstObject];
 //    }
     [cell setModel:model];
+    if (_cellConfigureBlock) {
+        _cellConfigureBlock(cell,model);
+    }
     return cell;
 }
 

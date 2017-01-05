@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+#import "XLBaseSectionModel.h"
 
 typedef Class (^cellClassWithModel)(id model);
+typedef void (^tableViewCellConfigureBlock)(id cell, id model);
 
 @interface XLBaseDataSource : NSObject<UITableViewDataSource>
 
 @property (nonatomic,copy)cellClassWithModel cellClassBlock;
+@property (nonatomic,copy)tableViewCellConfigureBlock cellConfigureBlock;
 @property (nonatomic, strong) NSMutableArray *sections;
 
 
@@ -25,9 +27,13 @@ typedef Class (^cellClassWithModel)(id model);
 - (void)appendRow:(id)row;
 - (void)appendRows:(NSArray *)rows;
 - (NSInteger)rowsCount;
+- (void)deleteARow:(id)row;
 
 // 根据indexPath返回对应行model
 - (id)tableView:(UITableView *)tableView objectForRowAtIndexPath:(NSIndexPath *)indexPath;
+// 根据indexPath返回对应区model
+- (__kindof XLBaseSectionModel *)tableView:(UITableView *)tableView ObjectForSectionAtSection:(NSInteger)section;
 #warning 注意：此block被copy到堆区，需要__weak修饰;根据不同的model或model相应的属性，返回不同的cell
 -(instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel;
+- (instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel configureCellBlock:(tableViewCellConfigureBlock)aConfigureCellBlock;
 @end

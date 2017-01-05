@@ -48,6 +48,8 @@
 		768980981D62BDC10094E52A /* QuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 768980971D62BDC10094E52A /* QuestionCell.m */; };
 		7689809D1D62BDCF0094E52A /* QuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689809A1D62BDCF0094E52A /* QuestionModel.m */; };
 		7689809E1D62BDCF0094E52A /* QuestionSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689809C1D62BDCF0094E52A /* QuestionSelectModel.m */; };
+		768A80D41E1DFF2100E8ACCD /* XLBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A80D31E1DFF2100E8ACCD /* XLBaseTableViewController.m */; };
+		768A80D71E1E15CD00E8ACCD /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768A80D61E1E15CD00E8ACCD /* TextViewController.m */; };
 		76C7A15A1D95171000E9906F /* FHHFPSIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C7A1571D95171000E9906F /* FHHFPSIndicator.m */; };
 		76C7A15B1D95171000E9906F /* UIWindow+FHH.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C7A1591D95171000E9906F /* UIWindow+FHH.m */; };
 		76C7A1641D95196A00E9906F /* NSObject+CellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C7A15E1D95196A00E9906F /* NSObject+CellHeight.m */; };
@@ -141,6 +143,10 @@
 		7689809A1D62BDCF0094E52A /* QuestionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionModel.m; sourceTree = "<group>"; };
 		7689809B1D62BDCF0094E52A /* QuestionSelectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSelectModel.h; sourceTree = "<group>"; };
 		7689809C1D62BDCF0094E52A /* QuestionSelectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionSelectModel.m; sourceTree = "<group>"; };
+		768A80D21E1DFF2100E8ACCD /* XLBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLBaseTableViewController.h; path = ../XLBaseTableViewController.h; sourceTree = "<group>"; };
+		768A80D31E1DFF2100E8ACCD /* XLBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLBaseTableViewController.m; path = ../XLBaseTableViewController.m; sourceTree = "<group>"; };
+		768A80D51E1E15CD00E8ACCD /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		768A80D61E1E15CD00E8ACCD /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		76C7A1561D95171000E9906F /* FHHFPSIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHHFPSIndicator.h; sourceTree = "<group>"; };
 		76C7A1571D95171000E9906F /* FHHFPSIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHHFPSIndicator.m; sourceTree = "<group>"; };
 		76C7A1581D95171000E9906F /* UIWindow+FHH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+FHH.h"; sourceTree = "<group>"; };
@@ -279,6 +285,8 @@
 		768980721D62BB7F0094E52A /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				768A80D21E1DFF2100E8ACCD /* XLBaseTableViewController.h */,
+				768A80D31E1DFF2100E8ACCD /* XLBaseTableViewController.m */,
 				76C7A15C1D95196A00E9906F /* Category */,
 				76C7A1611D95196A00E9906F /* Delegate */,
 				768980731D62BB7F0094E52A /* BaseCell */,
@@ -385,6 +393,8 @@
 			children = (
 				768980931D62BD950094E52A /* ViewController.h */,
 				768980941D62BD950094E52A /* ViewController.m */,
+				768A80D51E1E15CD00E8ACCD /* TextViewController.h */,
+				768A80D61E1E15CD00E8ACCD /* TextViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -495,6 +505,7 @@
 			files = (
 				7678EB0F1D95ED8200E17697 /* UIView+WebCacheOperation.m in Sources */,
 				76C7A15B1D95171000E9906F /* UIWindow+FHH.m in Sources */,
+				768A80D41E1DFF2100E8ACCD /* XLBaseTableViewController.m in Sources */,
 				7678EB091D95ED8200E17697 /* SDWebImagePrefetcher.m in Sources */,
 				7678EB0D1D95ED8200E17697 /* UIImageView+HighlightedWebCache.m in Sources */,
 				76C7A1651D95196A00E9906F /* UITableView+XLExtension.m in Sources */,
@@ -511,6 +522,7 @@
 				768980601D62B8FD0094E52A /* AppDelegate.m in Sources */,
 				76C7A1641D95196A00E9906F /* NSObject+CellHeight.m in Sources */,
 				7678EB081D95ED8200E17697 /* SDWebImageManager.m in Sources */,
+				768A80D71E1E15CD00E8ACCD /* TextViewController.m in Sources */,
 				7689809D1D62BDCF0094E52A /* QuestionModel.m in Sources */,
 				7689808D1D62BC690094E52A /* NSObject+YYModel.m in Sources */,
 				7678EB3F1D98EF9000E17697 /* MASConstraintMaker.m in Sources */,
