@@ -21,9 +21,11 @@
 }
 
 - (void)setupBaseDataSource {
+    __weak typeof(self) weakSelf = self;
     self.baseDataSource = [[XLBaseDataSource alloc]initWithModelForCellClass:^Class(id model) {
-        if ([self respondsToSelector:@selector(tableViewCellWithModel:)]) {
-            Class aClass = [self tableViewCellWithModel:model];
+        __strong typeof(weakSelf)strongSelf = weakSelf;
+        if ([strongSelf respondsToSelector:@selector(tableViewCellWithModel:)]) {
+            Class aClass = [strongSelf tableViewCellWithModel:model];
             if (aClass) {
                 return aClass;
             }
