@@ -45,8 +45,8 @@
 
     //设置数据源,注意：此block被copy到堆区，需要__weak修饰
     self.baseDataSource=[[XLBaseDataSource alloc]initWithModelForCellClass:^Class(QuestionSelectModel *model) {
-//        return [QuestionCell class];
-        return [Testios8Cell class];
+        return [QuestionCell class];
+//        return [Testios8Cell class];
     }];
     self.tableView.dataSource=self.baseDataSource;
 }

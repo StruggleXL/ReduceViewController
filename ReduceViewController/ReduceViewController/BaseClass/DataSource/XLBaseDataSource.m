@@ -110,8 +110,8 @@
 //        cell = [[[NSBundle mainBundle]loadNibNamed:className owner:nil options:nil]firstObject];
 //    }
     [cell setModel:model];
-    if (_cellConfigureBlock) {
-        _cellConfigureBlock(cell,model);
+    if (self.cellConfigureBlock) {
+        self.cellConfigureBlock(cell,model);
     }
     return cell;
 }

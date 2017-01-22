@@ -85,5 +85,20 @@
     }
     
 }
+#pragma mark - 下拉、上拉触发方法
+- (void)pullDownToRefreshAction {
+    if ([self.viewController respondsToSelector:@selector(pullDownToRefreshAction)]) {
+        [self.viewController pullDownToRefreshAction];
+    } else {
+        
+    }
+}
 
+- (void)pullUpToRefreshMoreAction {
+    if ([self.viewController respondsToSelector:@selector(pullUpToRefreshMoreAction)]) {
+        [self.viewController pullUpToRefreshMoreAction];
+    } else {
+        
+    }
+}
 @end

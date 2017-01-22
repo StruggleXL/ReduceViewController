@@ -10,6 +10,7 @@
 #import "QuestionModel.h"
 #import "YYModel.h"
 #import "QuestionCell.h"
+#import "Testios8Cell.h"
 
 @interface TextViewController ()
 
@@ -23,7 +24,7 @@
 }
 
 - (Class)tableViewCellWithModel:(id)model {
-    return [QuestionCell class];
+    return [Testios8Cell class];
 }
 
 -(void)loadData{

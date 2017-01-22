@@ -15,6 +15,8 @@
 @optional;
 - (Class)tableViewCellWithModel:(id)model;
 
+/** 当cell需要回调方法到vc时，在此方法中实现*/
+- (void)handleCallbackOperationWithCell:(__kindof UITableViewCell *)cell model:(id)model;
 @end
 
 @interface XLBaseTableViewController : UITableViewController<XLBaseTableViewControllerProtocol,XLTableViewDelegate>

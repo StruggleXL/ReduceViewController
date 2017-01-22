@@ -30,7 +30,6 @@
     return self;
 }
 
-
 -(void)setModel:(QuestionSelectModel *)model
 {
     [super setModel:model];

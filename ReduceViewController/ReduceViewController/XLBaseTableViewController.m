@@ -21,6 +21,17 @@
 }
 
 - (void)setupBaseDataSource {
+    void(^tableViewCellConfigureBlock)(id cell, id model);
+    // 如果子类实现了此方法，需要处理cell回调
+    if ([self respondsToSelector:@selector(handleCallbackOperationWithCell:model:)]) {
+        __weak typeof(self) weakSelf = self;
+        tableViewCellConfigureBlock = ^(id cell, id model) {
+            __strong typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf handleCallbackOperationWithCell:cell model:model];
+        };
+    } else {
+        tableViewCellConfigureBlock = nil;
+    }
     __weak typeof(self) weakSelf = self;
     self.baseDataSource = [[XLBaseDataSource alloc]initWithModelForCellClass:^Class(id model) {
         __strong typeof(weakSelf)strongSelf = weakSelf;
@@ -31,7 +42,7 @@
             }
         }
         return [UITableViewCell class];
-    }];
+    } configureCellBlock:tableViewCellConfigureBlock];
 }
 - (void)setupBaseDelegate {
     self.baseDelegate = [[XLTableDelegate alloc]init];

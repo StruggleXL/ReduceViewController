@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "NetMessage.h"
+#import "HttpRequestManager.h"
 @interface AppDelegate ()
 
 @end

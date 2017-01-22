@@ -15,6 +15,11 @@
 
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
 
+// 下拉刷新触发的方法(进行网络请求)
+- (void)pullDownToRefreshAction;
+
+// 上拉加载触发的方法(进行网络请求)
+- (void)pullUpToRefreshMoreAction;
 @end
 
 @interface XLTableDelegate : NSObject<XLTableViewDelegate>

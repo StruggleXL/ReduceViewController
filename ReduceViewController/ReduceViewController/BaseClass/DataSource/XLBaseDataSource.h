@@ -34,6 +34,6 @@ typedef void (^tableViewCellConfigureBlock)(id cell, id model);
 // 根据indexPath返回对应区model
 - (__kindof XLBaseSectionModel *)tableView:(UITableView *)tableView ObjectForSectionAtSection:(NSInteger)section;
 #warning 注意：此block被copy到堆区，需要__weak修饰;根据不同的model或model相应的属性，返回不同的cell
--(instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel;
+- (instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel;
 - (instancetype)initWithModelForCellClass:(cellClassWithModel)cellClassWithModel configureCellBlock:(tableViewCellConfigureBlock)aConfigureCellBlock;
 @end
