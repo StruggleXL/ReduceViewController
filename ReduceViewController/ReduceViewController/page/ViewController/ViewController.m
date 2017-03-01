@@ -59,7 +59,7 @@
     [self.baseDataSource appendSections:[NSArray yy_modelArrayWithClass:[QuestionModel class] json:dataArray]];
     [self.tableView reloadData];
     
-    [self performSelector:@selector(addDataWithTest) withObject:nil afterDelay:5];
+//    [self performSelector:@selector(addDataWithTest) withObject:nil afterDelay:5];
 }
 - (void)addDataWithTest {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];

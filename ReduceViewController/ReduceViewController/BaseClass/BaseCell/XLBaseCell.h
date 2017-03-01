@@ -12,8 +12,8 @@
 
 // 子类重写set方法，给cell绑定数据
 @property (nonatomic,strong) id model;
-/** 底部控件距下间距*/
-@property (nonatomic,assign) CGFloat xl_bottomSpace;
+/** 控件之间竖直方向总间距 warn:当使用autolayout布局时，此属性不需要赋值*/
+@property (nonatomic,assign) CGFloat xl_groupTotalMargin;
 /** 根据model由系统自动返回cell高度*/
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object;
 @end
